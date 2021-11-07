@@ -65,7 +65,7 @@ body {
 
 .send {
     min-height: 10px;
-    max-height: 100px;
+    max-height: 1000px;
     margin-top: 20px;
 }
 
@@ -83,22 +83,61 @@ p {
 }
 
 .sendtext {
-    width: 80%;
+    /*width: 100%;*/
     height: 30px;
+    background-color: #343434;
+    border: 3px solid #343434;
+    color: #bbbbbb;
+    padding: 5px;
+    font-family: monospace;
 }
 
 .sendtext_r {
-    width: 100%;
-    height: 30px;
+    width: 200px;
+    /*width: 100%;*/
+    border-radius: 5px;
+    padding: 15px;
+    height: 25px;
+    border: 3px solid #343434;
+    background-color: #343434;
 }
 
-.sendtext_f {
-    width: 50%;
-    height: 30px;
-    margin-left: 25%;
-    margin-right: 25%;
-    margin-top: 10%;
+.sendtext_r_in {
+    width: 200px;
+    /*width: 100%;*/
+    border-radius: 5px;
+    /*padding: 2px;*/
+    height: 35px;
+    border: 3px solid #343434;
+    background-color: #343434;
 }
+
+.sendtext_r:active, .sendtext_r:hover, .sendtext_r:focus {
+    outline: 0;
+    outline-offset: 0;
+}
+
+.sendtext_r_in:active, .sendtext_r_in:hover, .sendtext_r_in:focus {
+    outline: 0;
+    outline-offset: 0;
+}
+
+.sendtext:active, .sendtext:hover, .sendtext:focus {
+    outline: 0;
+    outline-offset: 0;
+}
+
+.tedt_a {
+    text-align: center;
+}
+
+/*.sendtext_f {*/
+    /*width: 50%;*/
+    /*height: 30px;*/
+    /*margin-left: 25%;*/
+    /*margin-right: 25%;*/
+    /*margin-top: 10%;*/
+/*}*/
 
 .sendsubmit {
     width: 20%;
@@ -120,18 +159,39 @@ code {
     top: 0;
 }
 
+#tosendb_auth {
+    background-color: #323232;
+    height: 35px;
+    /*padding: 5px;*/
+    width: 200px;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-family: sans-serif;
+    position: relative;
+    display: inline-block;
+    justify-content: center;
+    border: 2px solid #323232;
+    color: #bbbbbb;
+    border-radius: 5px;
+    margin-top: 30px;
+    cursor: pointer;
+}
+
 .reg_anotation {
     margin-top: 300px;
-    min-height: 300px;
-    min-width: 300px;
+    min-height: 150px;
+    min-width: 150px;
     border-radius: 6px;
     background-color: #242526;
     padding: 10px;
-    width: 17%;
-    height: 30%;
+    width: 310px;
+    height: auto;
     margin-left: auto;
     margin-right: auto;
     box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    padding-top: 50px;
+    padding-bottom: 50px;
 }
 
 .reg_block {

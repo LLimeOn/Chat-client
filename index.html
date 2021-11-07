@@ -2,6 +2,7 @@
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" href="style.css">
+        <script src="en.js"></script>
     </head>
     <body>
         <div class="error_host" id="tm_a">
@@ -9,8 +10,8 @@
         </div>
         <div class="reg_block" id="reg_bl">
             <div class="reg_anotation">
-                <div>
-                    <p>Имя:</p><input class="sendtext_r" type="text" name="tosend" id="area_auth"></br><p>Пароль:</p><input class="sendtext_r" type="text" name="tosend_pass" id="area_auth_pass"></br></br><p>Способ:</p><select class="sendtext_r" id="variant"><option>login</option><option>register</option></select><input type="submit" name="contm" class="sendtext_f" id="tosendb_auth" text="Войти">
+                <div class="tedt_a">
+                    <input placeholder="Name" style="text-align: center; color: #bbbbbb;" class="sendtext_r" type="text" name="tosend" id="area_auth"></br></br><input style="text-align: center; color: #bbbbbb;" placeholder="Password" class="sendtext_r" type="text" name="tosend_pass" id="area_auth_pass"></br></br><select style="color: #bbbbbb;" class="sendtext_r_in" id="variant"><option value="login" style="color:white" selected>login</option><option value="register" style="color:white">register</option></select></br><input type="submit" class="sendtext_f" id="tosendb_auth"></input>
                 </div>
             </div>
         </div>
@@ -25,10 +26,11 @@
                 </div>
             </div>
             <div class="block send" id="send_b" hidden>
-                <div class="ent">
-                    <input class="sendtext" type="text" name="tosend" id="area"><input type="submit" name="contm" class="sendsubmit" id="tosendb">
-                    
+                <div class="ent" id="iente">
+                    <div contenteditable="true" placeholder="Message" class="sendtext" id="snd_v" style="resize: none;"></div>
+                    <!-- <input placeholder="Message" class="sendtext" type="text" name="tosend" id="area"><input type="submit" name="contm" class="sendsubmit" id="tosendb"> -->
                 </div>
+                <div id="tp_bv"></div>
             </div>
 <!--             <div class="block autorization" id="auth_b">
                 <div class="ent">
