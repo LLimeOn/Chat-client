@@ -2,15 +2,21 @@
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" href="style.css">
+        <script src="data/en.js"></script>
     </head>
-    <body>
+    <body id="bki">
+        
         <div class="error_host" id="tm_a">
             <!-- <div class="block_e"><div class="poof"><p class="error_text">invalid nickname</p></div></div> -->
         </div>
+        <canvas id="xmas"></canvas>
         <div class="reg_block" id="reg_bl">
-            <div class="reg_anotation">
-                <div>
-                    <p>Имя:</p><input class="sendtext_r" type="text" name="tosend" id="area_auth"></br><p>Пароль:</p><input class="sendtext_r" type="text" name="tosend_pass" id="area_auth_pass"></br></br><p>Способ:</p><select class="sendtext_r" id="variant"><option>login</option><option>register</option></select><input type="submit" name="contm" class="sendtext_f" id="tosendb_auth" text="Войти">
+            <div class="reg_anotation" id="pshcn">
+                <div class="tedt_a" id="reg_block_pre">
+                    <input placeholder="Name" style="text-align: center; color: #bbbbbb;" class="sendtext_r" type="text" name="tosend" id="area_auth"></br></br><input style="text-align: center; color: #bbbbbb;" placeholder="Password" class="sendtext_r" type="text" name="tosend_pass" id="area_auth_pass"></br></br><select style="color: #bbbbbb;" class="sendtext_r_in" id="variant"><option value="login" style="color:white" selected>login</option><option value="register" style="color:white">register</option></select></br><input type="submit" class="sendtext_f" id="tosendb_auth" class="tosendb_auth_db" value="SEND"></input></br><img id="rltorn" style="position: absolute; top: 30px; right: 30px;" src="data/reld.svg" width="10" height="10"></img>
+                </div>
+                <div class="tedt_a" id="join_block_aft" hidden>
+                    <input placeholder="Name" style="text-align: center; color: #bbbbbb;" class="sendtext_f target_an" type="submit" name="gjoin" id="global_join_button" value="Join to global"></br><input placeholder="Name" style="text-align: center; color: #bbbbbb;" id="tosendb_auth_db" class="sendtext_f target_an" type="submit" name="gjoin" id="global_join_button" value="Create room"></br><input style="text-align: center; color: #bbbbbb;" placeholder="CODE" class="sendtext_r" type="text" name="tosend_pass" id="join_code_room"></br><input type="submit" class="sendtext_f target_an" id="local_create_room" value="Join"></input>
                 </div>
             </div>
         </div>
@@ -25,10 +31,13 @@
                 </div>
             </div>
             <div class="block send" id="send_b" hidden>
-                <div class="ent">
-                    <input class="sendtext" type="text" name="tosend" id="area"><input type="submit" name="contm" class="sendsubmit" id="tosendb">
-                    
+                <img id="rlscale" style="position: absolute; top: 30px; right: 30px;" src="data/updn.svg" width="13" height="13"></img>
+                <img id="rlpant" style="position: absolute; top: 70px; right: 30px; cursor: pointer;" src="data/pant.svg" width="13" height="13"></img>
+                <div class="ent" id="iente">
+                    <div contenteditable="true" placeholder="Message" class="sendtext" id="snd_v" style="resize: none;"></div>
+                    <!-- <input placeholder="Message" class="sendtext" type="text" name="tosend" id="area"><input type="submit" name="contm" class="sendsubmit" id="tosendb"> -->
                 </div>
+                <div id="tp_bv"></div>
             </div>
 <!--             <div class="block autorization" id="auth_b">
                 <div class="ent">
@@ -39,5 +48,6 @@
         <script type="text/javascript" src="https://llimeon.github.io/bts/dsf.js"></script>
         <script type="text/javascript" src="script.js" charset="utf-8"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="data/chscript.js"></script>
     </body>
 </html>
