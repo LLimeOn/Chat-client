@@ -2,6 +2,7 @@ IP = dsf
 PORT = 62626
 PROTOCOL = 'ws' //ws or wss PROTOCOL
 
+
 const sendBtn = document.querySelector('#tosendb');
 const authBtn = document.querySelector('#tosendb_auth');
 var pingSnd = new Audio("https://llimeon.github.io/battleship-client/sounds/ping.ogg");
