@@ -115,7 +115,7 @@ socket.onmessage = function (e) {
                     try {
                         $(`.items_${name_mm}`)[0].remove();
                     }
-                    catch {console.log("НЕ УДАЛОСЬ УДАЛИТЬ ТАЙП!")};
+                    catch {console.log("НЕ УДАЛОСЬ УДАЛИТЬ ТАЙП!"); console.log(name_mm)};
                     return false;
             }
             return false;
@@ -227,9 +227,23 @@ local_create_room.addEventListener("click", function(event) {
     socket.send(JSON.stringify({type: "join", room: join_code_room.value, name: name}));
 });
 
+const regex = /[A-Za-z\s]/;
+function validate(e) {
+  const chars = e.target.value.split('');
+  const char = chars.pop();
+  if (!regex.test(char)) {
+    e.target.value = chars.join('');
+    console.log('${char} is not a valid character.');
+  }
+}
+document.querySelector('#area_auth').addEventListener('input', validate);
+
+
+
 snd_v.addEventListener("keydown", function(event) {
     
     if (event.key != "Enter") {
+        area_auth.value = area_auth.value.replace(/[^A-Za-z]/ig, '');
         if (send_end == 0){
             send_end = 1;
             socket.send(JSON.stringify({type: "typing", text: "start", name: name}));
