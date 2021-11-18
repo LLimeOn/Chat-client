@@ -276,7 +276,6 @@ code {
     width: 350px;
     left: auto;
     right: auto;
-    height: 100%;
     position: absolute;
     z-index: 66;
     /*top: 0;*/
@@ -300,4 +299,18 @@ code {
 
 .block_e {
     padding: 10px;
+}
+
+.hover_img {
+    background-color: #ffffff00;
+    transition: all 0.2s linear;
+    padding: 7px;
+}
+
+.hover_img:hover {
+    background-color: #ffffff44;
+}
+
+.volume_box {
+    transform: rotate(-90deg);
 }
