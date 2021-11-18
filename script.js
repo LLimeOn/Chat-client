@@ -105,10 +105,9 @@ socket.onmessage = function (e) {
             contm.innerHTML = "<p><code>Конец чата</code></p>";
             return false;
         case "typing":
-            name_mm = rc.name;
+            name_mm = decodeURI(rc.name);
             switch (rc.text) {
                 case "start":
-                    name_mm = rc.name
                     var div = `<p style="margin:0; margin-top:2px; display:inline-flex; margin-right: 10px;" class='items_${name_mm}'>${name_mm} печатает..</p>`;
                     $("#tp_bv").append(div);
                     return false;
