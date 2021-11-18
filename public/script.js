@@ -2,10 +2,10 @@ IP = dsf
 PORT = 62626
 PROTOCOL = 'ws' //ws or wss PROTOCOL
 
-
 const sendBtn = document.querySelector('#tosendb');
 const authBtn = document.querySelector('#tosendb_auth');
 var pingSnd = new Audio("https://llimeon.github.io/battleship-client/sounds/ping.ogg");
+pingSnd.volume = 1;
 let ustate = 0;
 let name = "None";
 let u_id = 11111;
@@ -44,8 +44,9 @@ socket.onmessage = function (e) {
             if (rc.code) {
                 p = document.createElement('p');
                 p.innerHTML = `code: ${rc.code}`;
-                chat_a.prepend(p);
-            }
+                code_room.prepend(p);
+            };
+            return false;
         case "connection":
             if (rc.agree_connect == 1){
                 st_ty();
@@ -87,14 +88,34 @@ socket.onmessage = function (e) {
                 $('.block_e')[0].remove();
             }, 3000);
             return false;
+        case "message_list":
+            for (let i = rc.list.length - 1; i >= 0; i--) {
+                let ert = rc.list.length - i - 1;
+                let listik = rc.list[ert];
+                console.log(listik);
+                $("#contm").append(`<p onclick="this.hidden = true"><code>${decodeURI(listik.name)}</code>: ${decodeURI(listik.message)}</p>`);
+            };
+            return false;
+        case "exited":
+            $("#xmas_container").append("<canvas id='xmas'></canvas>")
+            reg_bl.hidden = false;
+            chat_a.hidden = true;
+            sh_b.hidden = false;
+            code_room.innerHTML = "";
+            contm.innerHTML = "<p><code>Конец чата</code></p>";
+            return false;
         case "typing":
             switch (rc.text) {
                 case "start":
-                    var div = `<p style="margin:0; margin-top:2px; display:inline-flex; margin-right: 10px;" class='items_${rc.name}'>${rc.name} печатает..</p>`;
+                name_mm = rc.name
+                    var div = `<p style="margin:0; margin-top:2px; display:inline-flex; margin-right: 10px;" class='items_${name_mm}'>${name_mm} печатает..</p>`;
                     $("#tp_bv").append(div);
                     return false;
                 case "stop":
-                    $(`.items_${rc.name}`)[0].remove();
+                    try {
+                        $(`.items_${name_mm}`)[0].remove();
+                    }
+                    catch {};
                     return false;
             }
             return false;
@@ -161,16 +182,38 @@ rlscale.addEventListener("click", function(event) {
 pshcn.style.marginTop = (innerHeight/2 - 150) + "px";
 
 rltorn.addEventListener("click", function(event) {
-    anime({
-        targets: ".sendtext_r, input, #variant",
-        translateY: function(el, i) { return anime.random(-200, 200) },
-        translateX: function(el, i) { return anime.random(-300, 300) },
-        // direction: 'alternate',
-        easing: 'easeInOutExpo',
-        endDelay: 300,
-    });
+    window.location.reload()
+    // anime({
+    //     targets: ".sendtext_r, input, #variant",
+    //     translateY: function(el, i) { return anime.random(-200, 200) },
+    //     translateX: function(el, i) { return anime.random(-300, 300) },
+    //     // direction: 'alternate',
+    //     easing: 'easeInOutExpo',
+    //     endDelay: 300,
+    // });
 });
 
+let vlumebn = 0;
+
+rlvolu.addEventListener("click", function(event) {
+    if (vlumebn < 1) {
+        slider_volu.hidden = false;
+        vlumebn = 1;
+    } else if (vlumebn > 0) {
+        slider_volu.hidden = true;
+        vlumebn = 0;
+    }
+});
+
+slider_volu.addEventListener("change", function(event) {
+    console.log(slider_volu.value)
+    pingSnd.volume = slider_volu.value;
+    pingSnd.play()
+});
+
+rlexit.addEventListener("click", function(event) {
+    socket.send(JSON.stringify({type: "exit", name: name}));
+});
 
 global_join_button.addEventListener("click", function(event) {
     socket.send(JSON.stringify({type: "join", room: "GLOBAL", name: name}));
