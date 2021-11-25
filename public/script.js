@@ -1,6 +1,6 @@
 IP = dsf
 PORT = 62626
-PROTOCOL = 'wss' //ws or wss PROTOCOL
+PROTOCOL = 'ws' //ws or wss PROTOCOL
 
 const sendBtn = document.querySelector('#tosendb');
 const authBtn = document.querySelector('#tosendb_auth');
